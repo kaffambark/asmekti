@@ -23,7 +23,11 @@ Après 1 à 2 minutes, l'app est en ligne : `https://VOTRE_COMPTE.github.io/asme
 ⚠️ Le fichier `.nojekyll` est caché sur Mac/Windows : l'afficher avant de glisser (il n'est pas obligatoire, mais il accélère la publication).
 
 ## Mettre à jour
-Remplacer les fichiers et faire un nouveau commit. `sw.js` change de version à chaque génération : les téléphones récupèrent la nouvelle version à la prochaine ouverture avec Internet.
+1. Changer `VERSION` / `VDATE` et ajouter une entrée en tête de `NEWS` (fichier `news.py` du générateur).
+2. Pour un module ou une séance ajoutés, lui donner `"since": "<nouvelle version>"` → étiquette « Nouveau » chez les stagiaires qui avaient une version plus ancienne.
+3. Régénérer, remplacer les fichiers, puis `git add . && git commit -m "Version x.y" && git push`.
+
+Côté stagiaire : à l'ouverture avec Internet, la nouvelle version se télécharge en arrière-plan, un bandeau « Nouvelle version disponible — Mettre à jour » apparaît, puis la fenêtre « Quoi de neuf ? » (FR / ع) s'affiche une seule fois. La progression est conservée.
 
 ## Côté stagiaire
 - **Android (Chrome)** : ouvrir le lien → menu ⋮ → « Installer l'application ».
