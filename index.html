@@ -35,6 +35,9 @@ button{font:inherit; color:inherit; cursor:pointer}
 .ib{background:rgba(255,255,255,.16); border:0; color:#fff; min-width:40px; height:40px; border-radius:10px; font-size:18px; font-weight:700; padding:0 10px}
 .ib.lang{font-size:17px; min-width:48px}
 .ib[hidden]{display:none}
+.ib#home{display:grid;place-items:center}
+.ib#home[hidden]{display:none}
+.top .logo{cursor:pointer}
 main{max-width:680px; margin:0 auto; padding:14px 14px 90px}
 h1{font-size:22px; margin:6px 0 4px; line-height:1.3}
 .sub{color:var(--mut); margin:0 0 14px; font-size:15px}
@@ -141,6 +144,7 @@ ol.steps p{margin:0}
   <button class="ib" id="back" aria-label="Retour" hidden>‹</button>
   <img class="logo" src="icons/asmekti-icon.svg" alt="Asmekti Learn">
   <div class="ttl" id="ttl"></div>
+  <button class="ib" id="home" aria-label="Accueil" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="display:block"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9.5h13V10"/><path d="M10 19.5v-5h4v5"/></svg></button>
   <button class="ib lang" id="lang" aria-label="Langue">ع</button>
 </header>
 <main id="main"></main>
@@ -212,7 +216,9 @@ function applyLang(){
   document.getElementById("back").textContent=ar?"›":"‹";
 }
 document.getElementById("lang").onclick=()=>{st.lang=st.lang==="ar"?"fr":"ar";save("mr_lang",st.lang);applyLang();render()};
-document.getElementById("back").onclick=()=>history.length>1&&location.hash?history.back():go("");
+document.getElementById("back").onclick=()=>{const h=location.hash.slice(1);go(/^s\d+$/.test(h)?"m":"")};
+document.getElementById("home").onclick=()=>go("");
+document.querySelector(".top .logo").onclick=()=>{if(location.hash)go("")};
 
 function go(h){ if(location.hash==="#"+h||(!h&&!location.hash)) render(); else location.hash=h; }
 window.addEventListener("hashchange",()=>{st.pos=0;render();window.scrollTo(0,0)});
@@ -220,6 +226,7 @@ window.addEventListener("hashchange",()=>{st.pos=0;render();window.scrollTo(0,0)
 function setTop(title,sub,back){
   document.getElementById("ttl").innerHTML=esc(title)+(sub?`<small>${esc(sub)}</small>`:"");
   document.getElementById("back").hidden=!back;
+  document.getElementById("home").hidden=!back;
 }
 function counts(list){let seen=0,ok=0;list.forEach(r=>{const p=P(S_BY[r.s].c[r.i].img);if(p.seen)seen++;if(p.ok)ok++});return{seen,ok}}
 function sessCards(n){return S_BY[n].c.map((c,i)=>({s:n,i}))}
@@ -358,7 +365,7 @@ function endView(){
   if(st.mode==="s"){
     const nx=st.sn+1;
     btn=(S_BY[nx]?`<button class="big" onclick="go('s${nx}')">${T("nextS")}</button>`:"")+
-        `<button class="big alt" onclick="again()">${T("again")}</button><button class="big alt" onclick="go('m')">${T("backMod")}</button>`;
+        `<button class="big alt" onclick="again()">${T("again")}</button><button class="big alt" onclick="go('m')">${T("backMod")}</button><button class="big alt" onclick="go('')">🏠 ${T("home")}</button>`;
     setTop(`${T("seance")} ${st.sn}`,S_BY[st.sn].t[l],true);
   }else{
     btn=`<button class="big gold" onclick="newExpress()">${T("newExp")}</button><button class="big alt" onclick="go('')">${T("home")}</button>`;
