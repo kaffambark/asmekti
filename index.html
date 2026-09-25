@@ -135,6 +135,7 @@ ol.steps p{margin:0}
 .cover .sl p{margin:0; font-size:16.5px; line-height:1.45; font-weight:600}
 .cover .sl .lat{font-size:13.5px; font-weight:500; opacity:.8; margin-top:3px; font-style:italic}
 .cover .go{margin-top:12px; width:100%; max-width:420px; border:0; border-radius:14px; padding:16px; font-size:18px; font-weight:800; background:#E3A21A; color:#231a00}
+.cover .ver{display:inline-block; margin-top:10px; font-size:12px; font-weight:700; letter-spacing:.04em; padding:4px 12px; border-radius:20px; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.3)}
 .cover .cr{font-size:12px; opacity:.7; margin-top:16px}
 
 </style>
@@ -252,7 +253,7 @@ function installTile(){
 }
 async function doInstall(){if(!deferredPrompt)return;deferredPrompt.prompt();try{await deferredPrompt.userChoice}catch(e){}deferredPrompt=null;render()}
 function vHome(){
-  setTop(T("app"),"ⴰⵙⵎⴽⵜⵉ · OFPPT",false);
+  setTop(T("app"),"ⴰⵙⵎⴽⵜⵉ · OFPPT · v1.0",false);
   const c=counts(ALL), l=L();
   let last="";
   if(st.last&&S_BY[st.last]) last=`<button class="big alt" onclick="go('s${st.last}')">${T("resume")} — ${T("seance")} ${st.last}</button>`;
@@ -396,7 +397,8 @@ function vCover(){
    <div class="sl" dir="rtl" style="text-align:right"><small>العربية</small><p>درسك في جيبك: تذكير سريع، بطاقة بعد بطاقة، بصور حصصك.</p></div>
    <div class="sl" dir="ltr"><small>Tamaziɣt</small><p>ⴰⵙⵎⴽⵜⵉ ⵏ ⵓⵍⵎⵓⴷ ⴳ ⵓⴼⵓⵙ ⵏⵏⴽ</p><p class="lat">Asmekti n ulmud g ufus nnek — le rappel du cours dans ta main</p></div>
    <button class="go" onclick="closeCover()">Commencer · ابدأ · ⴱⴷⵓ</button>
-   <div class="cr">Fonctionne sans Internet · يعمل دون إنترنت</div>`;
+   <div class="cr">Fonctionne sans Internet · يعمل دون إنترنت</div>
+   <div class="ver">Version 1.0 · 25/09/2026</div>`;
   document.body.appendChild(c);
 }
 function closeCover(){const c=document.getElementById("cover");c&&c.remove();document.querySelector(".top").style.display="";render()}
