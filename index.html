@@ -128,7 +128,7 @@ ol.steps p{margin:0}
 .cover .emb{width:96px; height:96px; border-radius:28px; background:rgba(255,255,255,.14); border:2px solid rgba(255,255,255,.35);
   display:grid; place-items:center; font-size:58px; line-height:1; margin-bottom:14px; box-shadow:0 8px 24px rgba(0,0,0,.25)}
 .cover h1{font-size:34px; margin:0; letter-spacing:.01em; line-height:1.15}
-.cover .tif{font-size:24px; letter-spacing:.12em; opacity:.9; margin:6px 0 4px}
+.cover .tif{font-size:24px; letter-spacing:.12em; opacity:.9; margin:6px 0 22px}
 .cover .mod{font-size:13.5px; opacity:.8; margin:0 0 20px}
 .cover .sl{width:100%; max-width:420px; background:rgba(255,255,255,.1); border-radius:14px; padding:12px 14px; margin:0 0 10px; text-align:start}
 .cover .sl small{display:block; font-size:11px; font-weight:800; letter-spacing:.08em; opacity:.7; text-transform:uppercase; margin-bottom:2px}
@@ -252,7 +252,7 @@ function installTile(){
 }
 async function doInstall(){if(!deferredPrompt)return;deferredPrompt.prompt();try{await deferredPrompt.userChoice}catch(e){}deferredPrompt=null;render()}
 function vHome(){
-  setTop(T("app"),"ⴰⵙⵎⴽⵜⵉ · OFPPT · ISIA Agadir",false);
+  setTop(T("app"),"ⴰⵙⵎⴽⵜⵉ · OFPPT",false);
   const c=counts(ALL), l=L();
   let last="";
   if(st.last&&S_BY[st.last]) last=`<button class="big alt" onclick="go('s${st.last}')">${T("resume")} — ${T("seance")} ${st.last}</button>`;
@@ -392,7 +392,6 @@ function vCover(){
   document.querySelector(".top").style.display="none";
   const c=document.createElement("div");c.className="cover";c.id="cover";
   c.innerHTML=`<img class="wm" src="icons/asmekti-logo-fond-sombre.svg" alt="Asmekti Learn — Rappel de cours · OFPPT"><div class="tif">ⴰⵙⵎⴽⵜⵉ</div>
-   <p class="mod">ISIA Agadir</p>
    <div class="sl" dir="ltr"><small>Français</small><p>Ton cours dans la poche : une piqûre de rappel, carte par carte, avec les images de tes séances.</p></div>
    <div class="sl" dir="rtl" style="text-align:right"><small>العربية</small><p>درسك في جيبك: تذكير سريع، بطاقة بعد بطاقة، بصور حصصك.</p></div>
    <div class="sl" dir="ltr"><small>Tamaziɣt</small><p>ⴰⵙⵎⴽⵜⵉ ⵏ ⵓⵍⵎⵓⴷ ⴳ ⵓⴼⵓⵙ ⵏⵏⴽ</p><p class="lat">Asmekti n ulmud g ufus nnek — le rappel du cours dans ta main</p></div>
