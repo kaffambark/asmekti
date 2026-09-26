@@ -1203,7 +1203,7 @@ function vSettings(){
     <div class="set"><b>🌓 ${T("setTheme")}</b>${seg([["auto",T("thAuto")],["light","☀️ "+T("thLight")],["dark","🌙 "+T("thDark")]],theme,"setTheme")}</div>
     <div class="set"><b>🔔 ${T("sound")}</b>${seg([[1,T("on")],[0,T("off")]],soundOn?1:0,"setSound")}</div>
     <div class="set" style="text-align:center">${mimg("p_laptop",150,"margin:0 auto")}<p class="sub" style="margin:4px 0 0">Asmekti Learn · v${DATA.v}</p>
-      <button class="newslink" onclick="showNews(true)">🆕 ${T("newsAll")}</button><br><button class="newslink" style="color:var(--ko)" onclick="resetProg()">${T("reset")}</button></div>`;
+      <button class="newslink" style="color:var(--ko)" onclick="resetProg()">${T("reset")}</button></div>`;
 }
 function setSound(v){if(!!v!==soundOn)toggleSound();vSettings()}
 
@@ -1302,7 +1302,7 @@ function vHome(){
    </div>
    <p class="sec" style="margin-top:18px">${T("choose")}</p>${mods}
    <p class="sub" style="margin-top:14px">💡 ${T("reviewInfo")}</p>
-   <div class="foot"><button class="newslink" onclick="toggleSound()">${soundOn?"🔔":"🔕"} ${T("sound")} : ${soundOn?T("on"):T("off")}</button><br><button class="newslink" onclick="showNews(true)">🆕 ${T("newsAll")} · v${DATA.v}</button><br>${T("credit")}<br><button onclick="resetProg()">${T("reset")}</button></div>`;
+   <div class="foot"><button onclick="resetProg()">${T("reset")}</button></div>`;
 }
 function resetProg(){ if(confirm(T("resetQ"))){["mr_prog","mr_last","mr_srs","mr_days","mr_best_streak","mr_badges","mr_exam","mr_revcount","mr_fav","mr_xp","mr_daily","mr_games","mr_order","mr_defis","mr_zoom","mr_theme"].forEach(k=>{try{localStorage.removeItem(k)}catch(e){}});
   st.prog={};st.last=null;srs={};days=[];earned={};examBest={};favs={};xp=0;gstats={vf:0,n:0};render()} }
@@ -1436,11 +1436,12 @@ function vCover(){
   document.querySelector(".top").style.display="none";
   const c=document.createElement("div");c.className="cover";c.id="cover";
   c.innerHTML=`<img class="wm" src="icons/asmekti-logo-fond-sombre.svg" alt="Asmekti Learn — Rappel de cours · OFPPT"><div class="tif">ⴰⵙⵎⴽⵜⵉ</div>
-   <div class="sl" dir="ltr"><small>Français</small><p>Ton cours dans la poche : une piqûre de rappel, carte par carte, avec les images de tes séances.</p></div>
    <div class="sl" dir="rtl" style="text-align:right"><small>العربية</small><p>درسك في جيبك: تذكير سريع، بطاقة بعد بطاقة، بصور حصصك.</p></div>
-   <div class="sl" dir="ltr"><small>Tamaziɣt</small><p>ⴰⵙⵎⴽⵜⵉ ⵏ ⵓⵍⵎⵓⴷ ⴳ ⵓⴼⵓⵙ ⵏⵏⴽ</p><p class="lat">Asmekti n ulmud g ufus nnek — le rappel du cours dans ta main</p></div>
-   <button class="go" onclick="closeCover()">Commencer · ابدأ · ⴱⴷⵓ</button>
-   <div class="cr">Fonctionne sans Internet · يعمل دون إنترنت</div>
+   <div class="sl" dir="ltr"><small>ⵜⴰⵎⴰⵣⵉⵖⵜ</small><p>ⴰⵙⵎⴽⵜⵉ ⵏ ⵓⵍⵎⵓⴷ ⴳ ⵓⴼⵓⵙ ⵏⵏⴽ</p></div>
+   <div class="sl" dir="ltr"><small>English</small><p>Your course in your pocket: a quick refresher, card by card, with pictures from your sessions.</p></div>
+   <div class="sl" dir="ltr"><small>Français</small><p>Ton cours dans la poche : une piqûre de rappel, carte par carte, avec les images de tes séances.</p></div>
+   <button class="go" onclick="closeCover()">ابدأ · ⴱⴷⵓ · Start · Commencer</button>
+   <div class="cr">يعمل دون إنترنت · ⵉⵜⵜⵅⴷⴰⵎ ⴱⵍⴰ ⵉⵏⵜⵔⵏⵉⵜ · Works offline · Fonctionne sans Internet</div>
    <div class="ver">Version 1.1 · 25/09/2026</div>`;
   document.body.appendChild(c);
 }
